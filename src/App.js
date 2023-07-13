@@ -1,26 +1,35 @@
-import { useState, createContext } from "react";
-import Content from "./Content";
-import "./App.css";
-export const themeContext = createContext();
+import { Fragment } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { publicRoutes } from './routes';
+import { DefaultLayout } from 'components/Layout';
 function App() {
-    const [show, setShow] = useState(true);
-    const [color, setColor] = useState("red");
-    const handleShow = () => {
-        return setShow(!show);
-    };
-    const handleColor = () => {
-        return setColor(color === "red" ? "blue" : "red");
-    };
     return (
-        <themeContext.Provider value={color}>
-            <div>
-                <button onClick={handleShow}>SHOW</button>
-                <br></br>
-                <button onClick={handleColor}>Color</button>
-
-                {show && <Content color={color} />}
+        <BrowserRouter>
+            <div className="App">
+                <Routes>
+                    {publicRoutes.map((route, index) => {
+                        const Page = route.component;
+                        let Layout = DefaultLayout;
+                        if (route.layout) {
+                            Layout = route.layout;
+                        } else if (route.layout === null) {
+                            Layout = Fragment;
+                        }
+                        return (
+                            <Route
+                                key={index}
+                                path={route.path}
+                                element={
+                                    <Layout>
+                                        <Page />
+                                    </Layout>
+                                }
+                            />
+                        );
+                    })}
+                </Routes>
             </div>
-        </themeContext.Provider>
+        </BrowserRouter>
     );
 }
 export default App;
