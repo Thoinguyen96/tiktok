@@ -1,0 +1,32 @@
+.wrapper {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 16px;
+    &:hover {
+        background: rgba(22, 24, 35, 0.03);
+    }
+}
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.name-user {
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+.name {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+.icon-tick {
+    background-color: transparent;
+    color: green;
+}
+.desc-user {
+    color: var(--text-grey);
+    font-weight: 400;
+}
