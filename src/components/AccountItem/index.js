@@ -23,6 +23,3 @@ function AccountItem() {
 }
 
 export default AccountItem;
-// setTimeout(() => {
-//     debugger;
-// }, 5000);

@@ -108,29 +108,15 @@
     font-size: 1.4rem;
     margin: 0 15px;
 }
-.sign-up {
-    border-radius: 3px;
-    min-width: 115px;
-    padding: 0 15px;
-    color: var(--text-white);
-    font-size: inherit;
-    background-color: var(--red-bold);
-    font-weight: inherit;
-}
-.wrapper-upload {
-    border-radius: 3px;
 
-    border: 1px solid var(--line-faint-grey);
-    display: flex;
-    align-items: center;
-    padding: 5px 10px;
-    gap: 10px;
-    min-width: 115px;
-}
 .dot {
     font-size: 1.6rem;
     color: var(--text-black);
 }
 .result-title {
     padding: 9px 16px;
+}
+.gap {
+    display: flex;
+    gap: 10px;
 }

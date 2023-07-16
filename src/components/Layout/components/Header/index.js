@@ -8,6 +8,7 @@ import {
     faEllipsisVertical,
     faBurger,
 } from '@fortawesome/free-solid-svg-icons';
+import Button from 'components/Button';
 import 'tippy.js/dist/tippy.css';
 import Tippy from '@tippyjs/react/headless';
 import classNames from 'classnames/bind';
@@ -82,13 +83,14 @@ function Header() {
                     </div>
                 </Tippy>
                 <div className={cx('action')}>
-                    <Tippy content="Tải Lên" placement="right">
-                        <div className={cx('wrapper-upload')}>
-                            <FontAwesomeIcon icon={faPlus} />
-                            <span className={cx('upload')}>Tải lên</span>
-                        </div>
-                    </Tippy>
-                    <button className={cx('sign-up')}>Đăng nhập</button>
+                    <Button className={cx('gap')} iconLeft={<FontAwesomeIcon icon={faPlus} />}>
+                        Tải lên
+                    </Button>
+
+                    <Button primary href="https://fullstack.edu.vn/" target="_blank">
+                        Đăng nhập
+                    </Button>
+
                     <button className={cx('dot')}>
                         <FontAwesomeIcon icon={faEllipsisVertical} />
                     </button>
