@@ -3,4 +3,23 @@
     gap: 10px;
     font-size: 1.3rem;
     width: 100%;
+    line-height: 1.8rem;
+}
+.wrapper {
+    justify-content: center;
+    display: flex;
+    position: relative;
+    padding: 9px 15px;
+}
+.back-btn {
+    font-size: 1.7rem;
+    width: 15px;
+    height: 80%;
+    left: -4px;
+    padding: 0 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute;
+    background-color: transparent;
+    cursor: pointer;
 }
