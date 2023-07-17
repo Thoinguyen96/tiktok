@@ -10,7 +10,7 @@
     border: 1px solid var(--line-faint-grey);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     &:hover {
         background-color: rgba(22, 24, 35, 0.03);
     }
@@ -39,4 +39,10 @@
 // Button size
 .large {
     width: 100%;
+}
+.icon {
+    display: inline-flex;
+    align-items: center;
+    width: 20px;
+    height: 20px;
 }

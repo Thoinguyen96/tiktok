@@ -112,6 +112,7 @@
 .dot {
     font-size: 1.6rem;
     color: var(--text-black);
+    padding: 0 10px;
 }
 .result-title {
     padding: 9px 16px;
@@ -119,4 +120,7 @@
 .gap {
     display: flex;
     gap: 10px;
+}
+.dot-wrap {
+    width: 250px;
 }

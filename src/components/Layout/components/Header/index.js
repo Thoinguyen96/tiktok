@@ -7,6 +7,9 @@ import {
     faPlus,
     faEllipsisVertical,
     faBurger,
+    faSignLanguage,
+    faCircleQuestion,
+    faKeyboard,
 } from '@fortawesome/free-solid-svg-icons';
 import Button from 'components/Button';
 import 'tippy.js/dist/tippy.css';
@@ -15,8 +18,24 @@ import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import { Wrapper as PopperWrapper } from 'components/Popper';
 import AccountItem from 'components/AccountItem';
+import Menu from 'components/Popper/Menu';
 
 const cx = classNames.bind(styles);
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faSignLanguage} />,
+        title: 'Tiếng Việt',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faCircleQuestion} />,
+        title: 'Phản hồi và trợ giúp',
+        to: 'feedback',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        title: 'Phím tắt và bàn phím',
+    },
+];
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
     useEffect(() => {
@@ -90,10 +109,11 @@ function Header() {
                     <Button primary href="https://fullstack.edu.vn/" target="_blank">
                         Đăng nhập
                     </Button>
-
-                    <button className={cx('dot')}>
-                        <FontAwesomeIcon icon={faEllipsisVertical} />
-                    </button>
+                    <Menu items={MENU_ITEMS}>
+                        <button className={cx('dot')}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                        </button>
+                    </Menu>
                 </div>
             </div>
         </header>
