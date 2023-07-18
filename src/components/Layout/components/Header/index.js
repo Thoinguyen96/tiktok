@@ -10,10 +10,17 @@ import {
     faSignLanguage,
     faCircleQuestion,
     faKeyboard,
+    faMessage,
+    faUser,
+    faBookmark,
+    faCoins,
+    faGear,
+    faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
 import Button from 'components/Button';
 import 'tippy.js/dist/tippy.css';
-import Tippy from '@tippyjs/react/headless';
+import HeadlessTippy from '@tippyjs/react/headless';
+import Tippy from '@tippyjs/react';
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import { Wrapper as PopperWrapper } from 'components/Popper';
@@ -49,6 +56,36 @@ const MENU_ITEMS = [
         title: 'Phím tắt và bàn phím',
     },
 ];
+const userMenu = [
+    {
+        icon: <FontAwesomeIcon icon={faUser} />,
+        title: 'Xem hồ sơ',
+        to: '/avatar',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faBookmark} />,
+        title: 'Yêu thích',
+        to: '/like',
+    },
+
+    {
+        icon: <FontAwesomeIcon icon={faCoins} />,
+        title: 'Nhận xu',
+        to: '/coin',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faGear} />,
+        title: 'Cài đặt',
+        to: '/setting',
+    },
+    ...MENU_ITEMS,
+    {
+        icon: <FontAwesomeIcon icon={faRightFromBracket} />,
+        title: 'Đăng xuất',
+        to: '/logout',
+        separate: true,
+    },
+];
 function Header() {
     const [searchResult, setSearchResult] = useState([]);
     useEffect(() => {
@@ -59,6 +96,7 @@ function Header() {
     const handleMenuChange = () => {
         return;
     };
+    const currenUser = true;
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -87,7 +125,7 @@ function Header() {
                         </g>
                     </svg>
                 </div>
-                <Tippy
+                <HeadlessTippy
                     interactive
                     visible={searchResult.length > 0}
                     render={(attrs) => (
@@ -116,19 +154,39 @@ function Header() {
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                     </div>
-                </Tippy>
+                </HeadlessTippy>
                 <div className={cx('action')}>
-                    <Button className={cx('gap')} iconLeft={<FontAwesomeIcon icon={faPlus} />}>
-                        Tải lên
-                    </Button>
+                    <Tippy interactive delay={[0, 200]} content="Tải lên" placement="bottom">
+                        <div>
+                            <Button className={cx('gap')} iconLeft={<FontAwesomeIcon icon={faPlus} />}>
+                                Tải lên
+                            </Button>
+                        </div>
+                    </Tippy>
 
-                    <Button primary href="https://fullstack.edu.vn/" target="_blank">
-                        Đăng nhập
-                    </Button>
-                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
-                        <button className={cx('dot')}>
-                            <FontAwesomeIcon icon={faEllipsisVertical} />
-                        </button>
+                    {currenUser ? (
+                        <>
+                            <button className={cx('messeger')}>
+                                <FontAwesomeIcon icon={faMessage} />
+                            </button>
+                        </>
+                    ) : (
+                        <>
+                            <Button primary>Đăng nhập</Button>
+                        </>
+                    )}
+                    <Menu items={currenUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
+                        {currenUser ? (
+                            <img
+                                className={cx('avatar-header')}
+                                alt="avatar"
+                                src="https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/429b5f6b617c83518b0c0615279171c7~c5_100x100.jpeg?x-expires=1689840000&x-signature=Ecz%2FH%2FyPr1W6cZSj95Tur4WfGtc%3D"
+                            />
+                        ) : (
+                            <button className={cx('dot')}>
+                                <FontAwesomeIcon icon={faEllipsisVertical} />
+                            </button>
+                        )}
                     </Menu>
                 </div>
             </div>

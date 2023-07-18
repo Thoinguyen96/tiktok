@@ -38,3 +38,9 @@ input,
 a[href] {
     text-decoration: none;
 }
+.tippy-content {
+    z-index: 10;
+    color: var(--text-white);
+    background-color: var(--text-grey);
+    border-radius: 4px;
+}
