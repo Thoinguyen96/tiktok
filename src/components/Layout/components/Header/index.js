@@ -56,6 +56,9 @@ function Header() {
             setSearchResult([]);
         }, 0);
     }, []);
+    const handleMenuChange = () => {
+        return;
+    };
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -122,7 +125,7 @@ function Header() {
                     <Button primary href="https://fullstack.edu.vn/" target="_blank">
                         Đăng nhập
                     </Button>
-                    <Menu items={MENU_ITEMS}>
+                    <Menu items={MENU_ITEMS} onChange={handleMenuChange}>
                         <button className={cx('dot')}>
                             <FontAwesomeIcon icon={faEllipsisVertical} />
                         </button>

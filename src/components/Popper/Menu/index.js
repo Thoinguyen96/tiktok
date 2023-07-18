@@ -8,13 +8,13 @@ import Header from './Header';
 import { useState } from 'react';
 
 const cx = classNames.bind(styles);
-function Menu({ children, items = [] }) {
+const defaultFn = () => {};
+function Menu({ children, items = [], onChange = defaultFn }) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
     function renderItems() {
         return current.data.map((item, index) => {
             const isParent = !!item.children;
-
             return (
                 <MenuItem
                     key={index}
@@ -24,6 +24,8 @@ function Menu({ children, items = [] }) {
                             setHistory((prev) => {
                                 return [...prev, item.children];
                             });
+                        } else {
+                            onChange(item);
                         }
                     }}
                 />
@@ -32,7 +34,6 @@ function Menu({ children, items = [] }) {
     }
     return (
         <Tippy
-            visible
             delay={[0, 500]}
             interactive
             placement="bottom-end"
