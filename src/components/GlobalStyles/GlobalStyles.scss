@@ -1,6 +1,8 @@
 @import 'normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap');
 :root {
+    --height-scroll-menu: 42px;
+    --background: #fff;
     --default-layout-header-width: 1150px;
     --default-layout-header-height: 60px;
     --text-black: #000;
@@ -13,6 +15,8 @@
     --line-grey: rgb(167 167 171);
     --line-faint-grey: #e0e0e0;
     --font-family: 'Montserrat', sans-serif;
+    // --max-height-wrap-popper-menu: min((100vh - 96px) - 60px, 760px);
+    --max-height-wrap-popper-menu: 100vh - 210px;
 }
 * {
     padding: 0;
@@ -24,10 +28,24 @@ html {
     font-size: 62.5%;
 }
 body {
+    overflow-y: overlay;
     font-size: 1.2rem;
     line-height: 1.5;
     font-family: var(--font-family);
     text-rendering: optimizeSpeed;
+}
+// scroll-bar   ---------------------
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 8px;
+}
+html *::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: rgba(22, 24, 35, 0.06);
+}
+html *::-webkit-scrollbar-track {
+    border-radius: 0;
+    background-color: rgba(0, 0, 0, 0);
 }
 button,
 input,

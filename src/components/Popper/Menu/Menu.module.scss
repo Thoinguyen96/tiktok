@@ -28,3 +28,13 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
+.wrap-title {
+    height: var(--height-scroll-menu);
+    width: 100%;
+    background-color: var(--background);
+}
+.height-title {
+    max-height: calc(var(--height-scroll-menu) + var(--max-height-wrap-popper-menu));
+
+    overflow-y: auto;
+}
