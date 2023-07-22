@@ -1,4 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import routesConfig from 'config/routes.js';
+
 import {
     faSignLanguage,
     faCircleQuestion,
@@ -18,6 +20,7 @@ import styles from './Header.module.scss';
 import Menu from 'components/Popper/Menu';
 import { DotIcon, LogoTiktok, MessageSms, MessengerIcon, UploadIcon } from 'components/Icons';
 import Search from '../Search';
+import { Link } from 'react-router-dom';
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
     {
@@ -85,9 +88,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
+                <Link to={routesConfig.home} className={cx('logo')}>
                     <LogoTiktok />
-                </div>
+                </Link>
                 <Search />
                 <div className={cx('action')}>
                     <Tippy interactive delay={[0, 200]} content="Tải lên" placement="bottom">

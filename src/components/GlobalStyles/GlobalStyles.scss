@@ -12,6 +12,7 @@
     --background-grey: rgb(241 241 242);
     --line-grey: rgb(167 167 171);
     --line-faint-grey: #e0e0e0;
+    --font-family: 'Montserrat', sans-serif;
 }
 * {
     padding: 0;
@@ -25,7 +26,7 @@ html {
 body {
     font-size: 1.2rem;
     line-height: 1.5;
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-family);
     text-rendering: optimizeSpeed;
 }
 button,
@@ -34,6 +35,7 @@ input,
     outline: none;
     border: none;
     background-color: transparent;
+    font-family: var(--font-family);
 }
 a[href] {
     text-decoration: none;

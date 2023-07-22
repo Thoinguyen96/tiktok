@@ -1,5 +1,6 @@
 import HeadlessTippy from '@tippyjs/react/headless';
 import axios from 'axios';
+
 import * as searchServices from 'apiServices/searchServices';
 import { Wrapper as PopperWrapper } from 'components/Popper';
 import AccountItem from 'components/AccountItem';
@@ -74,7 +75,10 @@ function Search() {
                     placeholder="Tìm kiếm"
                     spellCheck="false"
                     onChange={(e) => {
-                        setSearchValue(e.target.value);
+                        const searchValue = e.target.value;
+                        if (!searchValue.startsWith(' ')) {
+                            setSearchValue(searchValue);
+                        }
                     }}
                     onFocus={() => setShowResult(true)}
                 />
