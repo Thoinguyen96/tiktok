@@ -1,4 +1,6 @@
 import HeadlessTippy from '@tippyjs/react/headless';
+import axios from 'axios';
+import * as searchServices from 'apiServices/searchServices';
 import { Wrapper as PopperWrapper } from 'components/Popper';
 import AccountItem from 'components/AccountItem';
 import { useEffect, useState, useRef } from 'react';
@@ -6,7 +8,7 @@ import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark, faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-
+import { useDebounce } from 'hooks';
 const cx = classNames.bind(styles);
 
 function Search() {
@@ -14,26 +16,37 @@ function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [showResult, setShowResult] = useState(true);
     const [loading, setLoading] = useState(false);
-
+    const debounced = useDebounce(searchValue, 500);
     const inputRef = useRef();
     useEffect(() => {
-        if (!searchValue.trim()) {
+        if (!debounced.trim()) {
             setSearchResult([]);
             return;
         }
-        setLoading(true);
-        fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(searchValue)}&type=less`)
-            .then((response) => {
-                return response.json();
-            })
-            .then((response) => {
-                setSearchResult(response.data);
-                setLoading(false);
-            })
-            .catch(() => {
-                return setLoading(false);
-            });
-    }, [searchValue]);
+        const fetchApi = async () => {
+            setLoading(true);
+            const result = await searchServices.search(debounced);
+            setSearchResult(result);
+            setLoading(false);
+        };
+        // use fetch
+
+        // fetch(`https://tiktok.fullstack.edu.vn/api/users/search?q=${encodeURIComponent(debounced)}&type=less`)
+        //     .then((response) => {
+        //         return response.json();
+        //     })
+        //     .then((response) => {
+        //         setSearchResult(response.data);
+        //         setLoading(false);
+        //     })
+        //     .catch(() => {
+        //         return setLoading(false);
+        //     });
+
+        // use axios
+
+        fetchApi();
+    }, [debounced]);
     const handleHiddenResult = () => {
         return setShowResult(false);
     };
