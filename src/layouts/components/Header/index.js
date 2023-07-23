@@ -95,7 +95,11 @@ function Header() {
                 <div className={cx('action')}>
                     <Tippy interactive delay={[0, 200]} content="Tải lên" placement="bottom">
                         <div>
-                            <Button className={cx('gap')} iconLeft={<UploadIcon className={cx('upload-icon')} />}>
+                            <Button
+                                primary
+                                className={cx('gap')}
+                                iconLeft={<UploadIcon className={cx('upload-icon')} />}
+                            >
                                 Tải lên
                             </Button>
                         </div>

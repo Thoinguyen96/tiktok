@@ -11,6 +11,7 @@ import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 const defaultFn = () => {};
+
 function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn }) {
     const [history, setHistory] = useState([{ data: items }]);
     const current = history[history.length - 1];
@@ -34,32 +35,30 @@ function Menu({ children, items = [], hideOnClick = false, onChange = defaultFn 
             );
         });
     }
+    const renderResult = (attrs) => (
+        <div className={cx('list-item')} tabIndex="-1" {...attrs}>
+            <PopperWrapper>
+                {history.length - 1 > 0 && (
+                    <div className={cx('wrap-title')}>
+                        <Header
+                            title={current.title}
+                            onBack={() => setHistory((prev) => prev.slice(0, prev.length - 1))}
+                        />
+                    </div>
+                )}
+                <h2 className={cx('height-title')}>{renderItems()}</h2>
+            </PopperWrapper>
+        </div>
+    );
+    const handleResetToFirstPage = () => setHistory((prev) => prev.slice(0, 1));
     return (
         <Tippy
             delay={[0, 500]}
             hideOnClick={hideOnClick}
             interactive
             placement="bottom-end"
-            onHide={() => {
-                setHistory((prev) => {
-                    return prev.slice(0, 1);
-                });
-            }}
-            render={(attrs) => (
-                <div className={cx('list-item')} tabIndex="-1" {...attrs}>
-                    <PopperWrapper>
-                        {history.length - 1 > 0 && (
-                            <div className={cx('wrap-title')}>
-                                <Header
-                                    title={current.title}
-                                    onBack={() => setHistory((prev) => prev.slice(0, prev.length - 1))}
-                                />
-                            </div>
-                        )}
-                        <h2 className={cx('height-title')}>{renderItems()}</h2>
-                    </PopperWrapper>
-                </div>
-            )}
+            onHide={handleResetToFirstPage}
+            render={renderResult}
         >
             {children}
         </Tippy>
