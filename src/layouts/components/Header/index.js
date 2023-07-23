@@ -11,7 +11,7 @@ import {
     faGear,
     faRightFromBracket,
 } from '@fortawesome/free-solid-svg-icons';
-import Image from 'components/images';
+import Image from 'components/Images';
 import Button from 'components/Button';
 import 'tippy.js/dist/tippy.css';
 import Tippy from '@tippyjs/react';
