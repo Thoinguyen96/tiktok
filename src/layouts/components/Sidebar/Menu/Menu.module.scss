@@ -1,0 +1,19 @@
+.menu-item {
+    display: flex;
+    gap: 10px;
+    color: var(--text-black);
+    align-items: center;
+    &:hover {
+        background-color: var(--background-grey);
+    }
+    &.active {
+        color: red;
+    }
+    + .menu-item {
+        margin-top: 17px;
+    }
+}
+.title {
+    font-weight: 800;
+    font-size: 1.6rem;
+}
