@@ -1,12 +1,10 @@
-import Header from './Header';
-
-function DefaultLayout({ children }) {
+import Header from '../components/Header/Header';
+import Upload from '../../pages/Upload/Upload';
+function DefaultLayout({}) {
     return (
         <div>
             <Header />
-            <div className="container">
-                <div className="container">{children}</div>
-            </div>
+            <Upload />
         </div>
     );
 }
