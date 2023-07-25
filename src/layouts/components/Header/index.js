@@ -104,14 +104,18 @@ function Header() {
                             </Button>
                         </div>
                     </Tippy>
-                    <button className={cx('MessageSms')}>
-                        <MessageSms />
-                    </button>
+                    <Tippy interactive delay={[0, 200]} content="Tin nhắn" placement="bottom">
+                        <button className={cx('MessageSms')}>
+                            <MessageSms />
+                        </button>
+                    </Tippy>
                     {currentUser ? (
                         <>
-                            <button className={cx('messenger')}>
-                                <MessengerIcon />
-                            </button>
+                            <Tippy interactive delay={[0, 200]} content="Hộp Thư" placement="bottom">
+                                <button className={cx('messenger')}>
+                                    <MessengerIcon />
+                                </button>
+                            </Tippy>
                         </>
                     ) : (
                         <>
@@ -123,7 +127,7 @@ function Header() {
                             <Image
                                 className={cx('avatar-header')}
                                 alt="avatar"
-                                src="https://p16-sign-useast2a.tiktokcdn.com/tos-useast2a-avt-0068-giso/429b5f6b617c83518b0c0615279171c7~c5_100x100.jpeg?x-expires=1689840000&x-signature=Ecz%2FH%2FyPr1W6cZSj95Tur4WfGtc%3D"
+                                src="https://p16-sign-sg.tiktokcdn.com/aweme/100x100/tos-alisg-avt-0068/78a57708c273482c65e3105230c4ece9.jpeg?x-expires=1690365600&x-signature=%2BYOy%2BW6LKvN2UR3cd6qmpmd7DV4%3D"
                             />
                         ) : (
                             <button className={cx('dot')}>

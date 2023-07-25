@@ -1,0 +1,43 @@
+.wrap-name {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.account-item {
+    cursor: pointer;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+.avatar {
+    object-fit: cover;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+.nick-name {
+    font-size: 1.4rem;
+}
+.icon-check {
+    color: rgb(32, 213, 236);
+    font-size: 1.4rem;
+}
+.wrapper-avatar {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+}
+.interact {
+    display: flex;
+    justify-content: space-between;
+}
+.interact {
+    font-weight: 400;
+}
+.wrapper-popper {
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}

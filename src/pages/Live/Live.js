@@ -1,7 +1,7 @@
 function Live() {
     return (
         <div>
-            <button>Live page</button>;
+            <h2>Live page</h2>;
         </div>
     );
 }
